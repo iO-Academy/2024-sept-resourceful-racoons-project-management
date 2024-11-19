@@ -10,6 +10,7 @@ $projectModel = new ProjectModel($db);
 
 $projects = $projectModel->getProjects();
 
+
 ?>
 
 <!DOCTYPE html>

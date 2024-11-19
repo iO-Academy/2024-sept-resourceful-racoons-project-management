@@ -1,3 +1,12 @@
+<?php
+require_once 'src/Services/DatabaseService.php';
+require_once 'src/Models/TaskModel.php';
+
+$db = DatabaseService::connect();
+$taskModel = new TaskModel($db);
+$tasks = $taskModel->getTasks();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

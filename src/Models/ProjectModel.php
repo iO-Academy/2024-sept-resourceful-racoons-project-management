@@ -12,10 +12,17 @@ class ProjectModel
         $this->db = $db;
 
     }
+//Magic comment to ensure the array has to go through project Entity so you can't have a key that isn't in Project Entity
+    /**
+     * @return ProjectEntity []
+     *
+     */
 
     public function getProjects(): array
     {
         $query = $this->db->prepare('SELECT `id`, `name`, `client_id`, `description`, `deadline` FROM `projects`;');
+        $query->setFetchMode(PDO::FETCH_CLASS, ProjectEntity::class);
+        //Line above added to make returned item entity not an array, so can access name
         $query->execute();
         return $query->fetchAll();
     }

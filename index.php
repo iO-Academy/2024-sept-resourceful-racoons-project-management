@@ -10,31 +10,6 @@ $projectModel = new ProjectModel($db);
 
 $projects = $projectModel->getProjects();
 
-$projects = $projectModel->getById(1);
-
-//
-//$business = $BusinessModel->getById(3);
-//
-//echo displayBusiness($business);
-///**
-// * @param BusinessEntity[] $businesses
-// */
-//function displayBusiness(BusinessEntity $businesses): string {
-//    return "<div>$businesses->name - $businesses->description</div>";
-//}
-//
-
-//
-//echo ProjectDisplayService::displayProjects($projects);
-//
-//
-
-//
-//$projects = $projectDisplayService->displayProjects();
-
-
-//echo "<pre>";
-//var_dump($projects);
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +37,11 @@ $projects = $projectModel->getById(1);
 <!--            <input type="submit" value="Apply" class="rounded bg-green-100 px-3 py-1">-->
 <!--        </form>-->
         <section class="flex justify-start gap-5 mt-3 flex-wrap md:flex-nowrap">
-            <a href="project.html" class="hover:underline rounded-lg border p-4 py-6 text-4xl font-bold w-full md:w-1/4 bg-slate-300">Client 1</a>
-<!--            <a href="project.html" class="hover:underline rounded-lg border border-red-600 p-4 py-6 text-4xl font-bold w-full md:w-1/4 bg-red-300">Client 2</a>-->
-<!--            <a href="project.html" class="hover:underline rounded-lg border p-4 py-6 text-4xl font-bold w-full md:w-1/4 bg-slate-300">Client 3</a>-->
-<!--            <a href="project.html" class="hover:underline rounded-lg border p-4 py-6 text-4xl font-bold w-full md:w-1/4 bg-slate-300">Client 4</a>-->
+            <?php
+            echo
+            ProjectDisplayService::displayProjects($projects);
+            //Called the static function, using HTML within the function to display all the project names.
+            ?>
         </section>
     </main>
     <footer class="border-t border-slate-300 mt-3 mx-3 p-3 pt-5">

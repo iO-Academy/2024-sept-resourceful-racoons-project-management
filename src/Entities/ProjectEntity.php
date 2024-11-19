@@ -8,8 +8,8 @@ class ProjectEntity {
 
     public int $client_id;
 
-    public string $description;
+    public ?string $description;
 
-    public string $deadline;
+    public ?string $deadline;
 
 }

@@ -2,9 +2,7 @@
 
 require_once 'src/Services/DatabaseService.php';
 require_once 'src/Models/ProjectModel.php';
-
-
-
+require_once 'src/Services/ProjectDisplayService.php';
 
 $db = DatabaseService::connect();
 
@@ -12,9 +10,33 @@ $projectModel = new ProjectModel($db);
 
 $projects = $projectModel->getProjects();
 
+$projects = $projectModel->getById(1);
+
+//
+//$business = $BusinessModel->getById(3);
+//
+//echo displayBusiness($business);
+///**
+// * @param BusinessEntity[] $businesses
+// */
+//function displayBusiness(BusinessEntity $businesses): string {
+//    return "<div>$businesses->name - $businesses->description</div>";
+//}
+//
+
+//
+//echo ProjectDisplayService::displayProjects($projects);
+//
+//
+
+//
+//$projects = $projectDisplayService->displayProjects();
+
+
 //echo "<pre>";
 //var_dump($projects);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,16 +51,16 @@ $projects = $projectModel->getProjects();
     </header>
     <main class="p-3">
         <h2 class="text-4xl font-bold mb-2">Projects</h2>
-        <h4 class="text-2xl">Filter projects by Client:</h4>
-        <form>
-            <select class="px-3 py-1 rounded border">
-                <option>All Clients</option>
-                <option>Client 1</option>
-                <option>Client 2</option>
-                <option>Client 3</option>
-            </select>
-            <input type="submit" value="Apply" class="rounded bg-green-100 px-3 py-1">
-        </form>
+<!--        <h4 class="text-2xl">Filter projects by Client:</h4>-->
+<!--        <form>-->
+<!--            <select class="px-3 py-1 rounded border">-->
+<!--                <option>All Clients</option>-->
+<!--                <option>Client 1</option>-->
+<!--                <option>Client 2</option>-->
+<!--                <option>Client 3</option>-->
+<!--            </select>-->
+<!--            <input type="submit" value="Apply" class="rounded bg-green-100 px-3 py-1">-->
+<!--        </form>-->
         <section class="flex justify-start gap-5 mt-3 flex-wrap md:flex-nowrap">
             <a href="project.html" class="hover:underline rounded-lg border p-4 py-6 text-4xl font-bold w-full md:w-1/4 bg-slate-300">Client 1</a>
 <!--            <a href="project.html" class="hover:underline rounded-lg border border-red-600 p-4 py-6 text-4xl font-bold w-full md:w-1/4 bg-red-300">Client 2</a>-->

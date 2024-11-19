@@ -18,5 +18,13 @@ class ProjectModel
         return $query->fetchAll();
     }
 
+    public function displayTasks()
+    {
+        $query = $this->db->prepare('SELECT `tasks`.`name` AS "taskname", `tasks`.`estimate`, `users`.`name` as "username", `users`.`avatar` AS "icon" FROM `tasks`
+  INNER JOIN `users` ON `tasks`.`user_id` = `users`.`id`;');
+        $query->execute();
+        return $query->fetchAll();
+    }
+
 
 }

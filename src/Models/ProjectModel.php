@@ -41,8 +41,8 @@ class ProjectModel
 
     public function getProjectName(): array
     {
-        $query = $this->db->prepare('SELECT `projects`.`name` AS "projectname",
-`clients`.`name` AS "clientname" FROM `projects` INNER JOIN `clients` 
+        $query = $this->db->prepare('SELECT `projects`.`name` AS "projectname", `projects`.`id`,
+`clients`.`name` AS "clientname", `clients`.`logo` AS "clientlogo" FROM `projects` INNER JOIN `clients` 
 ON `projects`.`client_id` = `clients`.`id` WHERE `projects`.`id` = 1;');
 
         $query->execute();

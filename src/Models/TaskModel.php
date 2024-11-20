@@ -13,7 +13,7 @@ class TaskModel
      * @return TaskEntity []
      *
      */
-    public function getTasks(): array
+    public function getTasksById(): array
     {
         $query = $this->db->prepare('SELECT `project_id`, `user_id`, 
                                         `projects`.`name`,

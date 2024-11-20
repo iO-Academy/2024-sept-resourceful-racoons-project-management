@@ -1,24 +1,14 @@
 <?php
-
 require_once 'src/Services/DatabaseService.php';
 require_once 'src/Models/ProjectModel.php';
 require_once 'src/Models/UserModel.php';
 
 $db = DatabaseService::connect();
-
 $projectModel = new ProjectModel($db);
 $userModel = new UserModel($db);
-
 $projects = $projectModel->getProjectName();
 
-
-//echo "<pre>";
-//var_dump($projects);
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +20,7 @@ $projects = $projectModel->getProjectName();
 <header class="p-3 bg-teal-50 flex justify-between">
     <h1 class="sm:text-5xl text-4xl"><a href="index.php">Project Manager</a></h1>
     <div class="pr-3 flex">
-        <a href="project.html" class="p-3 bg-slate-300 rounded-l-lg border-y border-l">🇬🇧</a>
+        <a href="project.php" class="p-3 bg-slate-300 rounded-l-lg border-y border-l">🇬🇧</a>
         <a href="project-us.html" class="p-3 rounded-r-lg border-y border-r">🇺🇸</a>
     </div>
 </header>
@@ -39,13 +29,11 @@ $projects = $projectModel->getProjectName();
         <h2 class="text-4xl font-bold mb-2">Project Name
             <a href="index.php" class="text-base text-blue-600 hover:underline ms-3">Return to all projects</a>
         </h2>
-
         <div class="flex items-center gap-3">
             <h3 class="text-3xl font-bold">Client name</h3>
             <img class="w-[50px]" src="http://dummyimage.com/200x200.png/dddddd/000000" alt="client logo" />
         </div>
     </div>
-
     <section class="flex gap-5 flex-nowrap h-[70vh] pb-5 overflow-x-auto">
         <div class="shrink-0 w-full sm:w-1/2 lg:w-1/4 h-100">
             <div class="overflow-y-auto border rounded p-3 pb-0 h-full">
@@ -83,13 +71,12 @@ $projects = $projectModel->getProjectName();
                     class="float-right">
                 </h4>
                 <div class="w-full">
-                    <a class="block border rounded border-red-600 hover:underline mb-3 p-3 bg-red-200 border-red-600 text-2xl" href="task.html">
+                    <a class="block border rounded border-red-600 hover:underline mb-3 p-3 bg-red-200 border-red-600 text-2xl" href="task.php">
                         <?php
                         echo "<h3 class='mb-0 text-red-800 font-bold'>{$projects['clientname']}
                             <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>3</span>
                         </h3>"
                         ?>
-
                     </a>
                     <a class="block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl" href="task.php">
                         <h3 class="mb-0 font-bold">curae<span class="badge badge-info float-right"></span></h3>
@@ -215,7 +202,6 @@ $projects = $projectModel->getProjectName();
                 </div>
             </div>
         </div>
-
     </section>
 </main>
 <div style="right: 0px; top: 150px; height: 300px;" class="fixed">→</div>

@@ -1,5 +1,6 @@
 <?php
 require_once 'src/Entities/TaskEntity.php';
+
 class TaskModel
 {
     private PDO $db;
@@ -14,7 +15,12 @@ class TaskModel
      */
     public function getTasks(): array
     {
-        $query = $this->db->prepare('SELECT `projects`. `name`,  `project_id`, `user_id`, `tasks`. `name`, `tasks`. `description`, `estimate`, `tasks`. `deadline` FROM `tasks` LEFT JOIN `projects` ON `tasks`. `project_id` = `projects`. `id`;');
+        $query = $this->db->prepare('SELECT `project_id`, `user_id`, 
+                                        `projects`.`name`,
+                                        `tasks`. `name`,
+                                        `tasks`. `description`, `estimate`, `tasks`. `deadline` 
+                                        FROM `projects` LEFT JOIN `tasks` 
+                                        ON `tasks`. `project_id` = `projects`. `id`;');
         $query->setFetchMode(PDO::FETCH_CLASS, TaskEntity::class);
         $query->execute();
         return $query->fetchAll();

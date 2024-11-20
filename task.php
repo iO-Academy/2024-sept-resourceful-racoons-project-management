@@ -1,10 +1,13 @@
 <?php
 require_once 'src/Services/DatabaseService.php';
 require_once 'src/Models/TaskModel.php';
+require_once 'src/Entities/TaskEntity.php';
+require_once 'src/Services/TaskDisplayService.php';
 
 $db = DatabaseService::connect();
 $taskModel = new TaskModel($db);
 $tasks = $taskModel->getTasks();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,18 +35,23 @@ $tasks = $taskModel->getTasks();
         </div>
     </div>
     <section class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-3">
-        <div class="w-1/2">
-            <h5 class="text-lg font-bold">Task Estimate:</h5>
-            <p>3</p>
-        </div>
-        <div class="w-1/2">
-            <h5 class="text-lg font-bold">Task Deadline:</h5>
-            <p class="text-red-500">30/06/2024</p>
-        </div>
-        <div class="w-full my-3">
-            <h5 class="text-lg font-bold">Task Description:</h5>
-            <p>Task description goes here</p>
-        </div>
+        <?php
+        echo
+        TaskDisplayService::displayTasks($tasks);
+
+        ?>
+<!--        <div class="w-1/2">-->
+<!--            <h5 class="text-lg font-bold">Task Estimate:</h5>-->
+<!--            <p>3</p>-->
+<!--        </div>-->
+<!--        <div class="w-1/2">-->
+<!--            <h5 class="text-lg font-bold">Task Deadline:</h5>-->
+<!--            <p class="text-red-500">30/06/2024</p>-->
+<!--        </div>-->
+<!--        <div class="w-full my-3">-->
+<!--            <h5 class="text-lg font-bold">Task Description:</h5>-->
+<!--            <p>Task description goes here</p>-->
+<!--        </div>-->
     </section>
 </main>
 <div style="right: 0px; top: 150px; height: 300px;" class="fixed">→</div>

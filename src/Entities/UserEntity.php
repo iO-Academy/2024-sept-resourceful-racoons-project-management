@@ -1,7 +1,7 @@
 <?php
 
 
-readonly class UserEntity
+class UserEntity
 {
     public string $username;
 

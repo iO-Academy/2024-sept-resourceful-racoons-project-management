@@ -5,6 +5,7 @@ require_once 'src/Models/ProjectModel.php';
 require_once 'src/Models/UserModel.php';
 require_once 'src/Models/TaskModel.php';
 require_once 'src/Services/TaskDisplayService.php';
+require_once 'src/Services/UserDisplayService.php';
 $db = DatabaseService::connect();
 
 $projectModel = new ProjectModel($db);
@@ -14,8 +15,7 @@ $taskModel = new TaskModel($db);
 $projects = $projectModel->getProjectName();
 
 $tasks = $taskModel->getTasks();
-
-
+$users = $userModel->getAll();
 
 
 
@@ -61,31 +61,11 @@ $tasks = $taskModel->getTasks();
     </div>
 
     <section class="flex gap-5 flex-nowrap h-[70vh] pb-5 overflow-x-auto">
-        <div class="shrink-0 w-full sm:w-1/2 lg:w-1/4 h-100">
-            <div class="overflow-y-auto border rounded p-3 pb-0 h-full">
-                <h4 class="border-b pb-2 mb-3 text-2xl font-bold">
-                    <a href="user.html">Lamond Teather</a>
-                    <img
-                    src="https://robohash.org/explicaboautodit.png?size=50x50&set=set1" alt="Project Avatar"
-                    class="float-right">
-                </h4>
-                <div class="w-full">
-                    <a class="block border rounded border-red-600 hover:underline mb-3 p-3 bg-red-200 border-red-600 text-2xl" href="task.php">
-                        <h3 class="mb-0 text-red-800 font-bold">mattis
-                            <span class="bg-teal-400 px-2 rounded text-white font-bold float-right">3</span>
-                        </h3>
-                    </a>
-                    <a class="block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl" href="task.php">
-                        <h3 class="mb-0 font-bold">curae
-                            <span class="bg-teal-400 px-2 rounded text-white font-bold float-right">2</span>
-                        </h3>
-                    </a>
-                    <a class="block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl" href="task.php">
-                        <h3 class="mb-0 font-bold">curae<span class="badge badge-info float-right"></span></h3>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php
+        echo
+        UserDisplayService::displayUsers($users);
+        //Called the static function, using HTML within the function to display all the project names.
+        ?>
 
 
     </section>

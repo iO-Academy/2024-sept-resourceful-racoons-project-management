@@ -17,10 +17,10 @@ class UserModel
      */
     public function getAll(): array
     {
-        $query = $this->db->prepare('SELECT `users`.`name`,`users`.`avatar`,`users`.`id` 
+        $query = $this->db->prepare("SELECT `users`.`name` AS 'username',`users`.`avatar` AS 'usericon' 
 
                                     FROM `users` INNER JOIN `project_users` ON `users`.`id` = `project_users`.`user_id`
-                                     WHERE `project_users`.`project_id`= 1 ;');
+                                     WHERE `project_users`.`project_id`= 1 ;");
         $query->setFetchMode(PDO::FETCH_CLASS, UserEntity::class);
         $query->execute();
         return $query->fetchAll();

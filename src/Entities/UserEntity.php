@@ -3,9 +3,8 @@
 
 readonly class UserEntity
 {
-    public int $UserID;
-    public string $Username;
+    public string $username;
 
-    public string $Usericon;
+    public string $usericon;
 
 }

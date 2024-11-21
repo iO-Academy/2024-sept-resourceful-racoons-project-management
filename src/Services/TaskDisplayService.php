@@ -13,13 +13,14 @@ class TaskDisplayService
         //the . concatenates all the tasks so they all show on one page. Removed . to only show one task per page.
         //$task doesn't contain what you think it does -> when it says attempt to read property
         //means the bit before the skinny arrow isn't what you think it is
+        $deadline = TaskDisplayService::taskDateFormat($task);
         $output = "<div class='w-1/2'>
             <h5 class='text-lg font-bold'>Task Estimate:</h5>
             <p>$task->estimate</p>
         </div>
         <div class='w-1/2'>
             <h5 class='text-lg font-bold'>Task Deadline:</h5>
-            <p class='text-red-500'>$task->deadline</p>
+            <p class='text-red-500'>$deadline</p>
         </div>
         <div class='w-full my-3'>
             <h5 class='text-lg font-bold'>Task Description:</h5>
@@ -47,6 +48,12 @@ class TaskDisplayService
             }
         }
         return $output;
+    }
+
+    public static function taskDateFormat(TaskEntity $tasks): string
+    {
+        $time = strtotime($tasks->deadline);
+        return date('d-m-Y', $time);
     }
 }
 

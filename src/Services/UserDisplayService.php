@@ -10,7 +10,6 @@ class UserDisplayService
         return "<div>$users->username</div>";
     }
 
-
     /**
      * @param UserEntity[] $users
      */

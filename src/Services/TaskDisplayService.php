@@ -1,5 +1,4 @@
 <?php
-
 require_once 'src/Entities/TaskEntity.php';
 // WORK IN PROGRESS
 //class TaskDisplayService
@@ -32,7 +31,6 @@ class TaskDisplayService
         return "<div>$tasks->taskname</div>";
     }
 
-
     /**
      * @param TaskEntity[] $tasks
      */
@@ -41,10 +39,11 @@ class TaskDisplayService
         $output = '';
         foreach ($tasks as $task) {
             $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
-                        <h3 class='mb-0 font-bold'>$task->taskname<span class='badge badge-info float-right'></span></h3>
+                        <h3 class='mb-0 font-bold'>$task->taskname
+                        <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
+                        </h3>
                     </a>";
         }
         return $output;
     }
-
 }

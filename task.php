@@ -38,11 +38,7 @@ $tasks = $taskModel->getTaskById($task_id);
         </div>
     </div>
     <section class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-3">
-        <?php
-        echo
-        TaskDisplayService::displayTasks($tasks);
-
-        ?>
+        <?php echo TaskDisplayService::displayTask($tasks); ?>
 <!--        <div class="w-1/2">-->
 <!--            <h5 class="text-lg font-bold">Task Estimate:</h5>-->
 <!--            <p>3</p>-->

@@ -38,25 +38,27 @@ class TaskDisplayService
     {
         $todaysDate = date('Y-m-d');
         $output = '';
-        foreach ($tasks as $task)
-        {
-            if ($todaysDate > $task->deadline) //needs fixing but displays okay
-            $output .= "<a class='block border rounded border-red-600 hover:underline mb-3 p-3 bg-red-200 border-red-600 text-2xl' href='task.html'>
-                    <h3 class='mb-0 text-red-800 font-bold'>$task->taskname
-                    <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
-                </h3>
-            </a>";
-            else if ($task->deadline = null) // writing blue
-            $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
-                    <h3 class='mb-0 text-blue-800 font-bold'>$task->taskname
-                    <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
-                </h3>
-            </a>";
-                else $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
-                    <h3 class='mb-0 font-bold'>$task->taskname
-                    <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
-                </h3>
-            </a>";
+        foreach ($tasks as $task) {
+            if (is_null($task->deadline)) {
+                $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
+                                <h3 class='mb-0 font-bold'>$task->taskname
+                                <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
+                                </h3>
+                            </a>";
+            } else if ($todaysDate > $task->deadline) { 
+                // writing blue($todaysDate > $task->deadline) //needs fixing but displays okay
+                $output .= "<a class='block border rounded border-red-600 hover:underline mb-3 p-3 bg-red-200 border-red-600 text-2xl' href='task.html'>
+                                    <h3 class='mb-0 text-red-800 font-bold'>$task->taskname
+                                    <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
+                                </h3>
+                            </a>";
+            } else {
+                $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
+                            <h3 class='mb-0 font-bold'>$task->taskname
+                            <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
+                        </h3>
+                    </a>";
+            }
         }
         return $output;
     }

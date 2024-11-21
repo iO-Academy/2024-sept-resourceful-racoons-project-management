@@ -42,7 +42,7 @@ ON `projects`.`client_id` = `clients`.`id` WHERE `projects`.`id` = 1;');
         $query->execute();
         return $query->fetch();
     }
-    public function getById(int $id): ProjectEntity
+    public function getById(int $id): ProjectEntity|false
     {
         $query = $this->db->prepare('SELECT `id`, `name` FROM `projects` WHERE `id` = :id;');
         $query->setFetchMode(PDO::FETCH_CLASS, ProjectEntity::class);

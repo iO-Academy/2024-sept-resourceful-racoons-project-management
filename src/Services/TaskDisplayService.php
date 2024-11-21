@@ -46,9 +46,9 @@ class TaskDisplayService
                     <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
                 </h3>
             </a>";
-            else if ($task->deadline = null)
+            else if ($task->deadline = null) // writing blue
             $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
-                    <h3 class='mb-0 font-bold'>$task->taskname
+                    <h3 class='mb-0 text-blue-800 font-bold'>$task->taskname
                     <span class='bg-teal-400 px-2 rounded text-white font-bold float-right'>$task->estimate</span>
                 </h3>
             </a>";

@@ -17,7 +17,10 @@ class UserModel
      */
     public function getAll(): array
     {
-        $query = $this->db->prepare('SELECT `users`.`name` AS "Username", `users`.`avatar` AS "Usericon", `users`.`id` AS "UserID" FROM `users` INNER JOIN `project_users` ON `users`.`id` = `project_users`.`user_id`;');
+        $query = $this->db->prepare('SELECT `users`.`name`,`users`.`avatar`,`users`.`id` 
+
+                                    FROM `users` INNER JOIN `project_users` ON `users`.`id` = `project_users`.`user_id`
+                                     WHERE `project_users`.`project_id`= 1 ;');
         $query->setFetchMode(PDO::FETCH_CLASS, UserEntity::class);
         $query->execute();
         return $query->fetchAll();

@@ -6,7 +6,7 @@ class TaskEntity {
     public int $user_id;
     public string $name;
 
-    public string $Taskname;
+    public string $taskname;
 
     public ?string $description;
     public ?int $estimate;

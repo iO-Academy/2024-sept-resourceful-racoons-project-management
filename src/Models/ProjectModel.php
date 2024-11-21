@@ -26,25 +26,27 @@ class ProjectModel
         $query->execute();
         return $query->fetchAll();
     }
-    public function getTask(): array|false
-    {
-        $query = $this->db->prepare(
-     'SELECT `tasks`.`name` AS "taskname",
-`tasks`.`estimate`,
-`users`.`name` as "username",
- `users`.`avatar` AS "icon" 
- FROM `tasks` INNER JOIN `users` 
- ON `tasks`.`user_id` = `users`.`id`;');
-        $query->execute([]);
-        return $query->fetch();
-    }
+
+    //Not sure about this
+//    public function getTask(): array|false
+//    {
+//        $query = $this->db->prepare(
+//     'SELECT `tasks`.`name` AS "taskname",
+//`tasks`.`estimate`,
+//`users`.`name` as "username",
+// `users`.`avatar` AS "icon"
+// FROM `tasks` INNER JOIN `users`
+// ON `tasks`.`user_id` = `users`.`id`;');
+//        $query->execute([]);
+//        return $query->fetch();
+//    }
 
     public function getProjectName(): array
     {
         $query = $this->db->prepare('SELECT `projects`.`name` AS "projectname", `projects`.`id`,
 `clients`.`name` AS "clientname", `clients`.`logo` AS "clientlogo" FROM `projects` INNER JOIN `clients` 
 ON `projects`.`client_id` = `clients`.`id` WHERE `projects`.`id` = 1;');
-
+//query 1
         $query->execute();
         return $query->fetch();
     }

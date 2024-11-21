@@ -25,3 +25,25 @@ require_once 'src/Entities/TaskEntity.php';
 //        return $output;
 //    }
 
+class TaskDisplayService
+{
+    public static function displaySingle(TaskEntity $tasks): string
+    {
+        return "<div>$tasks->taskname</div>";
+    }
+
+
+    /**
+     * @param TaskEntity[] $tasks
+     */
+    public static function displayTasks(array $tasks): string
+    {
+        $output = '';
+        foreach ($tasks as $task) {
+            $output .= "<a class='block border rounded border-slate-600 hover:underline mb-3 p-3 bg-slate-300 text-2xl' href='task.php'>
+                        <h3 class='mb-0 font-bold'>$task->taskname<span class='badge badge-info float-right'></span></h3>
+                    </a>";
+        }
+        return $output;
+    }
+}

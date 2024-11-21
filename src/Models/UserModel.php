@@ -17,7 +17,7 @@ class UserModel
      */
     public function getAll(): array
     {
-        $query = $this->db->prepare("SELECT `users`.`name` AS 'username',`users`.`avatar` AS 'usericon' 
+        $query = $this->db->prepare("SELECT `users`.`id`, `users`.`name` AS 'username',`users`.`avatar` AS 'usericon' 
 
                                     FROM `users` INNER JOIN `project_users` ON `users`.`id` = `project_users`.`user_id`
                                      WHERE `project_users`.`project_id`= 1 ;");

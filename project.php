@@ -14,7 +14,7 @@ $taskModel = new TaskModel($db);
 
 $projects = $projectModel->getProjectName();
 
-$tasks = $taskModel->getTasks();
+
 $users = $userModel->getAll();
 
 
@@ -63,9 +63,11 @@ $users = $userModel->getAll();
     <section class="flex gap-5 flex-nowrap h-[70vh] pb-5 overflow-x-auto">
         <?php
         echo
-        UserDisplayService::displayUsers($users);
-        //Called the static function, using HTML within the function to display all the project names.
+        UserDisplayService::displayUsers($users, $taskModel, $projects['id']);
+
+
         ?>
+
 
 
     </section>

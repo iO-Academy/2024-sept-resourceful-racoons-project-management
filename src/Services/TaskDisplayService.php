@@ -7,22 +7,12 @@ class TaskDisplayService
         return "<div>$tasks->name</div>";
     }
 
-    /**
-     * @param TaskEntity[] $tasks
-     */
-    public static function displayTasks(array $tasks): string
+
+    public static function displayTasks(TaskEntity $task): string
     {
-//        foreach ($tasks as $task)
-//        {
-//            $task_id = $_GET ["task_id"];
-//        }
-
-
-
-
-        $output = '';
-        foreach ($tasks as $task) {
             //the . concatenates all the tasks so they all show on one page. Removed . to only show one task per page.
+            //$task doesn't contain what you think it does -> when it says attempt to read property
+            //means the bit before the skinny arrow isn't what you think it is
             $output = "<div class='w-1/2'>
             <h5 class='text-lg font-bold'>Task Estimate:</h5>
             <p>$task->estimate</p>
@@ -35,7 +25,6 @@ class TaskDisplayService
             <h5 class='text-lg font-bold'>Task Description:</h5>
             <p>$task->description</p>
         </div>";
-        }
         return $output;
 
 

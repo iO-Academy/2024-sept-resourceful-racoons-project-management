@@ -7,7 +7,8 @@ require_once 'src/Services/TaskDisplayService.php';
 $db = DatabaseService::connect();
 $taskModel = new TaskModel($db);
 $task_id = $_GET ["task_id"];
-$tasks = $taskModel->getTasksById(1);
+//taking the task_id from the URL and passing it through the function below
+$tasks = $taskModel->getTaskById($task_id);
 //echo "<pre>";
 //var_dump($task_id);
 ?>

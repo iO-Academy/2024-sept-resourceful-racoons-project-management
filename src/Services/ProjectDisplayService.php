@@ -9,7 +9,6 @@ class ProjectDisplayService
         return "<div>$projects->name</div>";
     }
 
-
     /**
      * @param ProjectEntity[] $projects
      */
@@ -24,6 +23,5 @@ class ProjectDisplayService
         }
         return $output;
     }
-
 }
 

@@ -6,9 +6,10 @@ require_once 'src/Services/TaskDisplayService.php';
 
 $db = DatabaseService::connect();
 $taskModel = new TaskModel($db);
+$task_id = $_GET ["task_id"];
 $tasks = $taskModel->getTasksById(1);
-echo "<pre>";
-var_dump($_GET);
+//echo "<pre>";
+//var_dump($task_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

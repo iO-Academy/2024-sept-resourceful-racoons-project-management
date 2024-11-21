@@ -15,6 +15,7 @@ class TaskModel
      */
     public function getTasksById(): array
     {
+        // With the where this query will be returning 1 TaskEntity, not an array of TaskEntities
         $query = $this->db->prepare('SELECT `project_id`, `user_id`, 
                                         `projects`.`name`,
                                         `tasks`. `name`,
@@ -23,6 +24,7 @@ class TaskModel
                                         ON `tasks`. `project_id` = `projects`. `id`;');
         $query->setFetchMode(PDO::FETCH_CLASS, TaskEntity::class);
         $query->execute();
+        // This needs to be come fetch()
         return $query->fetchAll();
     }
 }

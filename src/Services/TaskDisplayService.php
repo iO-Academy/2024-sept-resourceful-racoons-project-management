@@ -17,6 +17,9 @@ class TaskDisplayService
 //            $task_id = $_GET ["task_id"];
 //        }
 
+
+
+
         $output = '';
         foreach ($tasks as $task) {
             //the . concatenates all the tasks so they all show on one page. Removed . to only show one task per page.

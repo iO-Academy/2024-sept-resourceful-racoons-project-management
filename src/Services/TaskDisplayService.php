@@ -52,8 +52,13 @@ class TaskDisplayService
 
     public static function taskDateFormat(TaskEntity $tasks): string
     {
-        $time = strtotime($tasks->deadline);
-        return date('d-m-Y', $time);
+        if (is_null($tasks->deadline)) {
+            return 'N/A deadline';
+        }
+        else {
+            $time = strtotime($tasks->deadline);
+            return date('d-m-Y', $time);
+        }
     }
 }
 

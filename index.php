@@ -7,7 +7,11 @@ require_once 'src/Models/UserModel.php';
 $db = DatabaseService::connect();
 $projectModel = new ProjectModel($db);
 $userModel = new UserModel($db);
+
 $projects = $projectModel->getAll();
+
+$projects = $projectModel->getProjects();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +26,7 @@ $projects = $projectModel->getAll();
     </header>
     <main class="p-3">
         <h2 class="text-4xl font-bold mb-2">Projects</h2>
+
         <section class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-3">
             <?php
             echo

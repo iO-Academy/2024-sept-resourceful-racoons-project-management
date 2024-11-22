@@ -2,12 +2,15 @@
 require_once 'src/Services/DatabaseService.php';
 require_once 'src/Models/ProjectModel.php';
 require_once 'src/Models/UserModel.php';
-
+require_once 'src/Models/TaskModel.php';
+require_once 'src/Services/TaskDisplayService.php';
+require_once 'src/Services/UserDisplayService.php';
 $db = DatabaseService::connect();
 $projectModel = new ProjectModel($db);
 $userModel = new UserModel($db);
+$taskModel = new TaskModel($db);
 $projects = $projectModel->getProjectName();
-
+$users = $userModel->getAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,15 +29,26 @@ $projects = $projectModel->getProjectName();
 </header>
 <main class="p-3">
     <div class="flex justify-between mb-3">
+
         <h2 class="text-4xl font-bold mb-2">Project Name
             <a href="index.php" class="text-base text-blue-600 hover:underline ms-3">Return to all projects</a>
         </h2>
+
+        <?php
+        echo "<h2 class='text-4xl font-bold mb-2'>{$projects['projectname']}
+            <a href='index.php' class='text-base text-blue-600 hover:underline ms-3'>Return to all projects</a>
+        </h2>";
+        ?>
+
         <div class="flex items-center gap-3">
-            <h3 class="text-3xl font-bold">Client name</h3>
-            <img class="w-[50px]" src="http://dummyimage.com/200x200.png/dddddd/000000" alt="client logo" />
+            <?php
+            echo "<h3 class='text-3xl font-bold'>{$projects['clientname']}</h3>";
+            echo "<img class='w-[50px]' src='{$projects['clientlogo']}' alt='client logo' />"
+        ?>
         </div>
     </div>
     <section class="flex gap-5 flex-nowrap h-[70vh] pb-5 overflow-x-auto">
+
         <div class="shrink-0 w-full sm:w-1/2 lg:w-1/4 h-100">
             <div class="overflow-y-auto border rounded p-3 pb-0 h-full">
                 <h4 class="border-b pb-2 mb-3 text-2xl font-bold">
@@ -202,6 +216,10 @@ $projects = $projectModel->getProjectName();
                 </div>
             </div>
         </div>
+        <?php
+        echo
+        UserDisplayService::displayUsers($users, $taskModel, $projects['id']);
+        ?>
     </section>
 </main>
 <div style="right: 0px; top: 150px; height: 300px;" class="fixed">→</div>

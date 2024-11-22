@@ -1,8 +1,12 @@
 <?php
 
 
-readonly class UserEntity
+class UserEntity
 {
-    public int $id;
-    public string $name;
+    public string $username;
+
+    public string $id;
+
+    public string $usericon;
+
 }

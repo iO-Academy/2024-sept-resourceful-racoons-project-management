@@ -1,6 +1,7 @@
 <?php
 
-class ProjectEntity {
+class ProjectEntity
+{
 
     public int $id;
 
@@ -11,5 +12,5 @@ class ProjectEntity {
     public ?string $description;
 
     public ?string $deadline;
-
 }
+

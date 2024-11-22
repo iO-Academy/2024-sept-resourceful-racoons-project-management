@@ -1,3 +1,12 @@
+<?php
+require_once 'src/Services/DatabaseService.php';
+require_once 'src/Models/TaskModel.php';
+
+$db = DatabaseService::connect();
+$taskModel = new TaskModel($db);
+$tasks = $taskModel->getTasks();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +18,14 @@
 <header class="p-3 bg-teal-50 flex justify-between">
     <h1 class="sm:text-5xl text-4xl"><a href="index.php">Project Manager</a></h1>
     <div class="pr-3 flex">
-        <a href="task.html" class="p-3 bg-slate-300 rounded-l-lg border-y border-l">🇬🇧</a>
+        <a href="task.php" class="p-3 bg-slate-300 rounded-l-lg border-y border-l">🇬🇧</a>
         <a href="task-us.html" class="p-3 rounded-r-lg border-y border-r">🇺🇸</a>
     </div>
 </header>
 <main class="p-3">
     <div class="flex justify-between mb-3">
         <h2 class="text-4xl font-bold mb-2">Task Name - 30/06/2024
-            <a href="project.html" class="text-base text-blue-600 hover:underline ms-3">Return to project</a>
+            <a href="project.php" class="text-base text-blue-600 hover:underline ms-3">Return to project</a>
         </h2>
 
         <div class="flex items-center gap-3">

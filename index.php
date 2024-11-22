@@ -34,7 +34,7 @@ $projects = $projectModel->getProjects();
 <!--            </select>-->
 <!--            <input type="submit" value="Apply" class="rounded bg-green-100 px-3 py-1">-->
 <!--        </form>-->
-        <section class="flex justify-start gap-5 mt-3 flex-wrap md:flex-nowrap">
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-3">
             <?php
             echo
             ProjectDisplayService::displayProjects($projects);

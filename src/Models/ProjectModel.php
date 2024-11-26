@@ -41,13 +41,13 @@ class ProjectModel
 //        return $query->fetch();
 //    }
 
-    public function getProjectName(): array
+    public function getProjectName(int $id): array
     {
         $query = $this->db->prepare('SELECT `projects`.`name` AS "projectname", `projects`.`id`,
 `clients`.`name` AS "clientname", `clients`.`logo` AS "clientlogo" FROM `projects` INNER JOIN `clients` 
-ON `projects`.`client_id` = `clients`.`id` WHERE `projects`.`id` = 1;');
+ON `projects`.`client_id` = `clients`.`id` WHERE `projects`.`id` = :id;');
 //query 1
-        $query->execute();
+        $query->execute(['id' => $id]);
         return $query->fetch();
     }
 

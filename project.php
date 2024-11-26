@@ -11,8 +11,9 @@ $projectModel = new ProjectModel($db);
 $userModel = new UserModel($db);
 $taskModel = new TaskModel($db);
 
-$projects = $projectModel->getProjectName();
-$users = $userModel->getAll();
+$id=$_GET["id"];
+$projects = $projectModel->getProjectName($id);
+$users = $userModel->getAll($id);
 
 //$output = '';
 //echo "<pre>";

@@ -12,13 +12,13 @@ class TaskModel
      * @return TaskEntity []
      *
      */
-    public function getTasks(): array
+    public function getTaskById(int $id): TaskEntity
     {
-        $query = $this->db->prepare('SELECT `id`, `project_id`, `user_id`, `name`, `description`, `estimate`, `deadline` FROM `tasks`;');
+        $query = $this->db->prepare('SELECT `id`, `project_id`, `user_id`, `name`, `description`, `estimate`, `deadline` FROM `tasks` WHERE `id` = :id;');
         $query->setFetchMode(PDO::FETCH_CLASS, TaskEntity::class);
         //Line above added to make returned item entity not an array, so can access name
-        $query->execute();
-        return $query->fetchAll();
+        $query->execute(['id' => $id]);
+        return $query->fetch();
     }
 
     /**

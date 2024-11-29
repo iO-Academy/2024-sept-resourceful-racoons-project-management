@@ -19,13 +19,14 @@ class ProjectDisplayService
         $today = date('Y-m-d');
         foreach ($projects as $project) {
             if ($project->deadline < $today) {
-                $output .= "<a href='project.php' class='hover:underline rounded-lg border border-red-600 p-4 py-6 text-4xl font-bold w-full bg-red-300'>{$project->name}</a>";
+                $output .= "<a href='project.php?id={$project->id}' class='hover:underline rounded-lg border border-red-600 p-4 py-6 text-4xl font-bold w-full bg-red-300'>{$project->name}</a>";
             } else {
-                $output .= "<a href='project.php' class='hover:underline rounded-lg border p-4 py-6 text-4xl font-bold w-full bg-slate-300'>{$project->name}</a>";
+                $output .= "<a href='project.php?id={$project->id}' class='hover:underline rounded-lg border p-4 py-6 text-4xl font-bold w-full bg-slate-300'>{$project->name}</a>";
             }
         }
         return $output;
     }
 
 }
+
 

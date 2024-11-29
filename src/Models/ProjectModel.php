@@ -18,7 +18,7 @@ class ProjectModel
      *
      */
 
-    public function getProjects(): array
+    public function getByProjectId(): array
     {
         $query = $this->db->prepare('SELECT `id`, `name`, `client_id`, `description`, `deadline` FROM `projects`;');
         $query->setFetchMode(PDO::FETCH_CLASS, ProjectEntity::class);
@@ -27,13 +27,14 @@ class ProjectModel
         return $query->fetchAll();
     }
 
-    public function getById(int $id): ProjectEntity
+    public function getById(int $id): array
     {
-        $query = $this->db->prepare('SELECT `id`, `name` FROM `projects` WHERE `id` = :id;');
-        $query->setFetchMode(PDO::FETCH_CLASS, ProjectEntity::class);
+        $query = $this->db->prepare('SELECT `projects`.`name` AS "projectname", `projects`.`id`,
+`clients`.`name` AS "clientname", `clients`.`logo` AS "clientlogo" FROM `projects` INNER JOIN `clients` 
+ON `projects`.`client_id` = `clients`.`id` WHERE `projects`.`id` = :id;');
+//query 1
         $query->execute(['id' => $id]);
         return $query->fetch();
     }
-
 
 }

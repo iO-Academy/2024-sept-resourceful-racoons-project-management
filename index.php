@@ -1,15 +1,13 @@
 <?php
-
 require_once 'src/Services/DatabaseService.php';
 require_once 'src/Models/ProjectModel.php';
 require_once 'src/Services/ProjectDisplayService.php';
+require_once 'src/Models/UserModel.php';
 
 $db = DatabaseService::connect();
-
 $projectModel = new ProjectModel($db);
-
-$projects = $projectModel->getProjects();
-
+$userModel = new UserModel($db);
+$projects = $projectModel->getByProjectId();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +20,7 @@ $projects = $projectModel->getProjects();
 <body>
 
     <header class="p-3 bg-teal-50 flex justify-between">
-        <h1 class="sm:text-5xl text-4xl"><a href="index.html">Project Manager</a></h1>
+        <h1 class="sm:text-5xl text-4xl"><a href="index.php">Project Manager</a></h1>
     </header>
     <main class="p-3">
         <h2 class="text-4xl font-bold mb-2">Projects</h2>

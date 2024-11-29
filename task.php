@@ -20,10 +20,6 @@ $task = $taskModel->getTaskById($task_id);
 <body class="h-full">
 <header class="p-3 bg-teal-50 flex justify-between">
     <h1 class="sm:text-5xl text-4xl"><a href="index.php">Project Manager</a></h1>
-    <div class="pr-3 flex">
-        <a href="task.php" class="p-3 bg-slate-300 rounded-l-lg border-y border-l">🇬🇧</a>
-        <a href="task-us.html" class="p-3 rounded-r-lg border-y border-r">🇺🇸</a>
-    </div>
 </header>
 <main class="p-3">
     <div class="flex justify-between mb-3">

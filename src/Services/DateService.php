@@ -16,4 +16,13 @@ class DateService
 
         return false;
     }
+    public static function dateFormat(TaskEntity $task): string
+    {
+        if (!$task->deadline) {
+            return "N/A";
+        }
+        $timestamp = strtotime($task->deadline);
+        $formattedDate = date('d-m-Y', $timestamp);
+        return $formattedDate;
+    }
 }

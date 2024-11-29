@@ -1,9 +1,7 @@
 <?php
 require_once 'src/Entities/TaskEntity.php';
 require_once 'src/Services/DateService.php';
-
 require_once 'src/Services/TaskDisplayService.php';
-
 
 class TaskDisplayService
 {
@@ -36,19 +34,11 @@ class TaskDisplayService
         return $output;
     }
 
-    public static function taskDateFormat(TaskEntity $task): string
-    {
-        if (!$task->deadline) {
-            return "N/A";
-        }
-        $timestamp = strtotime($task->deadline);
-        $formattedDate = date('d-m-Y', $timestamp);
-        return $formattedDate;
-    }
+
 
     public static function displayTask(TaskEntity $task): string
     {
-        $formattedDeadline = self::taskDateFormat($task);
+        $formattedDeadline = DateService::dateFormat($task);
         return "<div class='w-1/2'>
                     <h5 class='text-lg font-bold'>Task Estimate:</h5>
                     <p>$task->estimate</p>

@@ -1,8 +1,10 @@
 <?php
 require_once 'src/Entities/TaskEntity.php';
+
 class TaskModel
 {
     private PDO $db;
+
     public function __construct(PDO $db)
     {
         $this->db = $db;

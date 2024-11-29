@@ -6,11 +6,9 @@ require_once 'src/Services/TaskDisplayService.php';
 
 $db = DatabaseService::connect();
 $taskModel = new TaskModel($db);
-$task_id = $_GET ["task_id"];
+$task_id = $_GET["task_id"];
 //taking the task_id from the URL and passing it through the function below
-$tasks = $taskModel->getTaskById($task_id);
-//echo "<pre>";
-//var_dump($task_id);
+$task = $taskModel->getTaskById($task_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +27,8 @@ $tasks = $taskModel->getTaskById($task_id);
 </header>
 <main class="p-3">
     <div class="flex justify-between mb-3">
-        <h2 class="text-4xl font-bold mb-2"><?php echo $tasks->name . ' - ' . TaskDisplayService::taskDateFormat($tasks) ?>
-            <a href="project.php?id=<?php echo $tasks->project_id ?>" class="text-base text-blue-600 hover:underline ms-3">Return to project</a>
+        <h2 class="text-4xl font-bold mb-2"><?php echo $task->name . ' - ' . DateService::dateFormat($task) ?>
+            <a href="project.php?id=<?php echo $task->project_id ?>" class="text-base text-blue-600 hover:underline ms-3">Return to project</a>
         </h2>
         <div class="flex items-center gap-3">
             <h3 class="text-3xl font-bold">User</h3>
@@ -38,7 +36,7 @@ $tasks = $taskModel->getTaskById($task_id);
         </div>
     </div>
     <section class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-3">
-        <?php echo TaskDisplayService::displayTask($tasks); ?>
+        <?php echo TaskDisplayService::displayTask($task); ?>
 
     </section>
 </main>

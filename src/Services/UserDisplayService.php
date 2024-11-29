@@ -5,9 +5,9 @@ require_once 'src/Services/TaskDisplayService.php';
 
 class UserDisplayService
 {
-    public static function displaySingle(UserEntity $users): string
+    public static function displaySingle(UserEntity $user): string
     {
-        return "<div>$users->username</div>";
+        return "<div>$user->username</div>";
     }
 
     /**
